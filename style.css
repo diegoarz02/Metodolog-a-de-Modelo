@@ -82,6 +82,7 @@ body {
     font-weight: 800;
     background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     margin-bottom: 0.5rem;
     line-height: 1.2;
@@ -239,6 +240,7 @@ body {
     font-size: 2.2rem;
     background: linear-gradient(to right, #e2e8f0, #94a3b8);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -279,7 +281,7 @@ footer {
     border-top: 1px solid var(--glass-border);
 }
 
-/* Responseive adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .timeline-step { padding-left: 4.5rem; }
     .timeline-container::before { left: 24px; }

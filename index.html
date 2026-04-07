@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodología de Modelos - ML y Data Mining</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <header class="hero">
+        <h1>Metodología de Modelos</h1>
+        <h2>Machine Learning & Data Mining</h2>
+        
+        <div class="group-info glass-panel">
+            <h3>Grupo 2</h3>
+            <ul class="members-list">
+                <li>Araujo Diego</li>
+                <li>Berrospi Nicolle</li>
+                <li>Jimenez Andres</li>
+                <li>Grados Parrish</li>
+                <li>Castro Jair</li>
+                <li>Torres Matias</li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="methodology-intro text-center">
+            <h2>El Ciclo de Vida del Modelo</h2>
+            <p>Selecciona cada proceso en la línea de tiempo para explorar la metodología paso a paso.</p>
+        </section>
+
+        <section class="timeline-container">
+            <!-- Timeline elements -->
+            <div class="timeline-step" data-step="1">
+                <div class="step-icon">1</div>
+                <div class="step-content glass-panel">
+                    <h3>Comprensión del Problema</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Entender la necesidad real. ¿Qué estamos intentando predecir, clasificar o descubrir?</p>
+                        <p><strong>Acciones:</strong> Definir los objetivos del proyecto, establecer métricas de éxito del negocio (KPIs) y comprender las limitaciones éticas o de recursos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-step" data-step="2">
+                <div class="step-icon">2</div>
+                <div class="step-content glass-panel">
+                    <h3>Comprensión de los Datos</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Adquirir los datos y familiarizarse fuertemente con ellos.</p>
+                        <p><strong>Acciones:</strong> Extraer datos de las fuentes disponibles (bases de datos relacionales, archivos CSV, APIs) y realizar un Análisis Exploratorio de Datos (EDA) inicial identificando patrones y anomalías.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-step" data-step="3">
+                <div class="step-icon">3</div>
+                <div class="step-content glass-panel">
+                    <h3>Preparación y Limpieza de los Datos</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Obtener el dataset final curado. Esta es la fase que siempre tomará más iteraciones.</p>
+                        <p><strong>Acciones:</strong> Limpieza (imputación de valores nulos o vacíos, manejo de outliers o valores atípicos), transformación, escalado, Feature Engineering y separación Train/Test.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-step="4">
+                <div class="step-icon">4</div>
+                <div class="step-content glass-panel">
+                    <h3>Modelado</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Seleccionar y aplicar algoritmos de Machine Learning a los datos limpios.</p>
+                        <p><strong>Acciones:</strong> Diseñar un modelo simple de baseline. Luego probar algoritmos avanzados (XGBoost, Random Forest, Redes Neuronales) y ajustar los hiperparámetros de las mejores opciones.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-step="5">
+                <div class="step-icon">5</div>
+                <div class="step-content glass-panel">
+                    <h3>Evaluación y Validación</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Calificar rigurosamente el rendimiento del modelo en datos nunca antes vistos (Train Split).</p>
+                        <p><strong>Acciones:</strong> Analizar la matriz de confusión y métricas (Accuracy, Precision, Recall, F1-Score). Medir que el modelo sea generalizable (sin de Overfitting ni Underfitting).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-step="6">
+                <div class="step-icon">6</div>
+                <div class="step-content glass-panel">
+                    <h3>Despliegue en Producción</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Hacer que el modelo sea útil en el entorno real entregando predicciones.</p>
+                        <p><strong>Acciones:</strong> Empaquetar el modelo (ej. .pkl, Onnx), desarrollar una API REST (FastAPI, Flask) o exponerlo en un servicio Cloud. Contenedorizarlo en Docker para replicabilidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-step="7">
+                <div class="step-icon">7</div>
+                <div class="step-content glass-panel">
+                    <h3>Monitoreo Continuo</h3>
+                    <div class="step-details">
+                        <p><strong>Objetivo:</strong> Las relaciones de variables cambian y los modelos en el mundo real se degradan. El monitoreo previene esto.</p>
+                        <p><strong>Acciones:</strong> Vigilar distribuciones que nos alerten de posible Data Drift o Concept Drift para relanzar un re-entrenamiento (Volver a fases previas).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-rules glass-panel">
+            <h2>Nuestra Metodología de Equipo</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h4>📝 Git/GitHub</h4>
+                    <p>Empleamos ramas por cada <i>feature</i> de la app y reservamos la rama <code>main</code> para código cien por ciento funcional y verificado.</p>
+                </div>
+                <div class="rule-card">
+                    <h4>📦 Entornos Virtuales</h4>
+                    <p>Utilizamos entornos de Python (`venv` o `conda`) y versionamiento local guiado por un único `requirements.txt`.</p>
+                </div>
+                <div class="rule-card">
+                    <h4>💬 Comunicación Ágil</h4>
+                    <p>La toma constante de feedback evita retrabajos en etapas posteriores, especialmente luego de los resultados del Análisis Exploratorio (EDA).</p>
+                </div>
+                <div class="rule-card">
+                    <h4>📓 Documentación (Notebooks)</h4>
+                    <p>Mantenemos el orden. Todo código debe acompañarse de bloques de texto (teoría) que expliquen el <i>porqué</i> de las decisiones tomadas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Inteligencia Artificial | <strong>Grupo 2</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

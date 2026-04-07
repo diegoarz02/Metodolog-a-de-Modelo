@@ -23,23 +23,17 @@ body {
     line-height: 1.6;
 }
 
-/* Efecto de Fondo Neon/Místico */
+/* Fondo Dinámico */
 .background-effects {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    background: radial-gradient(circle at center, #0a0d18 0%, #000000 100%);
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; overflow: hidden;
+    background: radial-gradient(circle at center, #0a0d1b 0%, #000000 100%);
 }
 
 .glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.4;
+    position: absolute; border-radius: 50%;
+    filter: blur(120px); opacity: 0.4;
     animation: drift 25s infinite alternate ease-in-out;
 }
 
@@ -47,20 +41,14 @@ body {
 .orb-2 { width: 600px; height: 600px; background: var(--accent-2); bottom: -30%; right: -20%; animation-delay: -5s; }
 .orb-3 { width: 400px; height: 400px; background: var(--accent-3); top: 40%; left: 60%; animation-delay: -10s; opacity: 0.2;}
 
-@keyframes drift {
-    100% { transform: translate(100px, 80px) scale(1.1); }
-}
+@keyframes drift { 100% { transform: translate(100px, 80px) scale(1.1); } }
 
-/* Contenedores */
 .container {
-    max-width: 1050px;
-    margin: 0 auto;
-    padding: 2rem;
+    max-width: 1050px; margin: 0 auto; padding: 2rem;
 }
-
 .text-center { text-align: center; }
 
-/* Efecto Glassmorphism Chvr */
+/* Panel de Cristal (Glassmorphism) */
 .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
@@ -68,224 +56,203 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 6rem 2rem 3rem;
-}
-
+/* Cabecera / Hero */
+.hero { text-align: center; padding: 6rem 2rem 3rem; }
 .hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 3.5rem; font-weight: 800;
     background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+    margin-bottom: 0.5rem; line-height: 1.2;
 }
+.hero h2 { font-size: 1.5rem; font-weight: 400; color: var(--text-muted); margin-bottom: 4rem; }
 
-.hero h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin-bottom: 4rem;
-}
-
-.group-info {
-    display: inline-block;
-    padding: 1.5rem 3.5rem;
-}
-
-.group-info h3 {
-    margin-bottom: 1.2rem;
-    color: #e2e8f0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-}
-
+.group-info { display: inline-block; padding: 1.5rem 3.5rem; }
+.group-info h3 { margin-bottom: 1.2rem; color: #e2e8f0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
 .members-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem 3rem;
-    text-align: left;
+    list-style: none; display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem 3rem; text-align: left;
 }
+.members-list li { font-size: 1.05rem; display: flex; align-items: center; }
 
-.members-list li {
-    font-size: 1.05rem;
-    display: flex;
-    align-items: center;
-}
-
-/* Timeline/Esquema interactivo */
-.methodology-intro { margin: 5rem 0 3rem; }
+/* ====== ESTILOS DEL MAPA INTERACTIVO ====== */
+.methodology-intro { margin: 5rem 0 0rem; }
 .methodology-intro h2 { font-size: 2.2rem; margin-bottom: 0.5rem;}
-.methodology-intro p { color: var(--text-muted); font-size: 1.1rem; }
+.methodology-intro p { color: var(--accent-1); font-size: 1.1rem; }
 
-.timeline-container {
+.map-wrapper {
     position: relative;
-    padding: 2rem 0;
+    width: 100%;
+    max-width: 700px;
+    height: 650px;
+    margin: 2rem auto 5rem;
 }
 
-/* Linea Base */
-.timeline-container::before {
-    content: '';
+#connection-lines {
     position: absolute;
-    top: 0;
-    left: 28px;
-    height: 100%;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3));
-    z-index: 0;
-    border-radius: 4px;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; pointer-events: none;
 }
 
-.timeline-step {
-    position: relative;
-    margin-bottom: 2.5rem;
-    padding-left: 5.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1;
+.hub-line {
+    stroke: rgba(59, 130, 246, 0.3);
+    stroke-width: 2;
+    stroke-dasharray: 6, 6;
+    animation: dashLine 40s linear infinite;
 }
 
-.step-icon {
+.cycle-line {
+    stroke: rgba(168, 85, 247, 0.6);
+    stroke-width: 4;
+    stroke-dasharray: 10, 10;
+    animation: dashLine 20s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.8));
+}
+
+@keyframes dashLine {
+    to { stroke-dashoffset: -1000; }
+}
+
+#map-container {
     position: absolute;
-    left: 4px;
-    width: 50px;
-    height: 50px;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+}
+
+.center-hub {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, #3b82f6, #0f172a);
     border-radius: 50%;
-    background: var(--bg-dark);
-    border: 3px solid var(--accent-1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.3rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-    color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.3rem; color: white;
+    text-transform: uppercase; letter-spacing: 1px;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    text-align: center; z-index: 10;
+    border: 3px solid rgba(255,255,255,0.2);
 }
 
-.step-content {
-    padding: 1.8rem;
-    transform-origin: top;
+.glow-pulse {
+    animation: pulseArea 2.5s infinite alternate ease-in-out;
 }
 
-/* Interactive Timeline States */
-.timeline-step:hover .step-icon {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+@keyframes pulseArea {
+    0% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); transform: translate(-50%, -50%) scale(1); }
+    100% { box-shadow: 0 0 60px rgba(168, 85, 247, 0.9); transform: translate(-50%, -50%) scale(1.05); }
 }
 
-.timeline-step:hover .step-content {
-    border-color: rgba(99, 102, 241, 0.3);
+/* Nodos Orbitando */
+.map-node {
+    position: absolute;
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer; z-index: 5;
+    transform: translate(-50%, -50%);
 }
 
-.timeline-step.active .step-icon {
-    background: linear-gradient(to bottom right, var(--accent-2), var(--accent-3));
-    border-color: transparent;
-    color: white;
-    box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+.node-dot {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #0f172a; border: 3px solid var(--accent-3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: bold; color: white;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.map-node:hover .node-dot {
+    background: var(--accent-3);
     transform: scale(1.2);
+    box-shadow: 0 0 35px var(--accent-3);
 }
 
-.timeline-step.active .step-content {
-    border-color: var(--accent-2);
-    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15);
+.node-text {
+    margin-top: 12px; background: rgba(0, 0, 0, 0.8);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 0.9rem; font-weight: 600; color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    white-space: nowrap; transition: all 0.3s ease;
 }
 
-.step-details {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.5s ease;
-    margin-top: 0;
+.map-node:hover .node-text {
+    background: var(--accent-3);
+    border-color: transparent;
 }
 
-.timeline-step.active .step-details {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 1.2rem;
-    border-top: 1px solid var(--glass-border);
-    padding-top: 1rem;
+/* Posiciones de los Nodos del Esquema (Heptágono Virtual) */
+.node-1 { top: 7%; left: 50%; }
+.node-2 { top: 23%; left: 86%; }
+.node-3 { top: 62%; left: 95%; }
+.node-4 { top: 92%; left: 72%; }
+.node-5 { top: 92%; left: 28%; }
+.node-6 { top: 62%; left: 5%; }
+.node-7 { top: 23%; left: 14%; }
+
+
+/* ====== ESTILOS DEL MODAL ====== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px);
+    z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 
-.step-details p {
-    margin-bottom: 0.8rem;
-    font-size: 1rem;
-    color: #cbd5e1;
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.info-modal {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -40%);
+    width: 90%; max-width: 550px;
+    background: rgba(15, 23, 42, 0.9);
+    z-index: 101; border-radius: 20px; padding: 3rem;
+    opacity: 0; pointer-events: none; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    border: 1px solid var(--accent-2);
 }
 
-.step-details strong {
-    color: var(--accent-3);
-}
+.info-modal.active { opacity: 1; pointer-events: all; transform: translate(-50%, -50%); }
 
-/* Rules Section */
-.team-rules {
-    margin-top: 6rem;
-    padding: 3rem;
+.close-btn {
+    position: absolute; top: 15px; right: 20px;
+    background: transparent; border: none;
+    color: white; font-size: 2.2rem; cursor: pointer; transition: color 0.2s;
 }
+.close-btn:hover { color: var(--accent-3); }
+#modal-title { font-size: 1.8rem; color: var(--accent-1); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; }
+.modal-body p { margin-bottom: 1.2rem; color: #e2e8f0; font-size: 1.05rem;}
+.modal-body strong { color: var(--accent-3); font-size: 1.1rem;}
 
+
+/* Reglas del equipo */
+.team-rules { margin-top: 5rem; padding: 3rem; }
 .team-rules h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.2rem;
+    text-align: center; margin-bottom: 3rem; font-size: 2.2rem;
     background: linear-gradient(to right, #e2e8f0, #94a3b8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-
-.rules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-}
-
+.rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
 .rule-card {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 1.8rem;
-    border-radius: 16px;
-    border: 1px solid var(--glass-border);
-    transition: transform 0.3s ease;
+    background: rgba(0, 0, 0, 0.3); padding: 1.8rem;
+    border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s;
 }
+.rule-card:hover { transform: translateY(-8px); border-color: var(--accent-1); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+.rule-card h4 { color: var(--accent-1); margin-bottom: 0.8rem; font-size: 1.1rem; }
+.rule-card p { font-size: 0.95rem; color: #94a3b8; }
 
-.rule-card:hover { transform: translateY(-5px); border-color: var(--accent-1); }
+footer { text-align: center; padding: 3rem; margin-top: 5rem; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--glass-border); }
 
-.rule-card h4 {
-    color: var(--accent-1);
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
-}
-
-.rule-card p {
-    font-size: 0.95rem;
-    color: #94a3b8;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 3rem;
-    margin-top: 5rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--glass-border);
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
-    .timeline-step { padding-left: 4.5rem; }
-    .timeline-container::before { left: 24px; }
-    .step-icon { width: 40px; height: 40px; font-size: 1rem; left: 5px; }
+    .map-wrapper { height: 450px; }
+    .center-hub { width: 80px; height: 80px; font-size: 0.8rem; }
+    .node-dot { width: 40px; height: 40px; font-size: 1rem; }
+    .node-text { font-size: 0.75rem; padding: 2px 8px; }
     .members-list { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.5rem; }
+    .info-modal { padding: 2rem; }
+    #modal-title { font-size: 1.4rem; }
 }

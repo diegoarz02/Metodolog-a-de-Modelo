@@ -3,119 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodología de Modelos - ML y Data Mining</title>
+    <title>Metodología CRISP-DM</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-effects">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-    </div>
+    <div class="tech-bg"></div>
 
-    <header class="hero">
-        <h1>Metodología de Modelos</h1>
-        <h2>Machine Learning & Data Mining</h2>
-        
-        <div class="group-info glass-panel">
-            <h3>Grupo 2</h3>
-            <ul class="members-list">
-                <li>Araujo Diego</li>
-                <li>Berrospi Nicolle</li>
-                <li>Jimenez Andres</li>
-                <li>Grados Parrish</li>
-                <li>Castro Jair</li>
-                <li>Torres Matias</li>
-            </ul>
-        </div>
+    <header class="header-title">
+        <h1>METODOLOGÍA DE MODELO (CRISP-DM ADAPTADO)</h1>
+        <h2>FLUJO DE PROCESO DE MACHINE LEARNING Y DATOS</h2>
     </header>
 
-    <main class="container">
-        <section class="methodology-intro text-center">
-            <h2>Mapa Interactivo del Ciclo de Vida</h2>
-            <p>Explora nuestra red metodológica. Haz clic en cualquier nodo para revelar sus secretos.</p>
-        </section>
+    <main class="crisp-layout">
+        <!-- SVG Canvas para las Flexas Curvas -->
+        <svg id="crisp-arrows">
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="28" refY="5" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+                </marker>
+            </defs>
+        </svg>
 
-        <!-- Esquema Creativo / Mapa Mental -->
-        <div class="map-wrapper">
-            <!-- Lienzo SVG donde JS dibujará las líneas de conexión animadas -->
-            <svg id="connection-lines"></svg>
-            
-            <div class="mindmap" id="map-container">
-                <!-- Núcleo Central -->
-                <div class="center-hub glow-pulse">Ciclo ML</div>
-                
-                <!-- Nodos en órbita -->
-                <div class="map-node node-1" data-step="1">
-                    <div class="node-dot">1</div>
-                    <div class="node-text">1. Negocio</div>
-                </div>
-                <div class="map-node node-2" data-step="2">
-                    <div class="node-dot">2</div>
-                    <div class="node-text">2. Datos</div>
-                </div>
-                <div class="map-node node-3" data-step="3">
-                    <div class="node-dot">3</div>
-                    <div class="node-text">3. Preparación</div>
-                </div>
-                <div class="map-node node-4" data-step="4">
-                    <div class="node-dot">4</div>
-                    <div class="node-text">4. Modelado</div>
-                </div>
-                <div class="map-node node-5" data-step="5">
-                    <div class="node-dot">5</div>
-                    <div class="node-text">5. Evaluación</div>
-                </div>
-                <div class="map-node node-6" data-step="6">
-                    <div class="node-dot">6</div>
-                    <div class="node-text">6. Deploy</div>
-                </div>
-                <div class="map-node node-7" data-step="7">
-                    <div class="node-dot">7</div>
-                    <div class="node-text">7. Monitoreo</div>
-                </div>
+        <div class="crisp-container" id="nodes-container">
+            <!-- Centro "Planeta Datos" -->
+            <div class="center-globe text-glow">
+                <h3>DATOS</h3>
             </div>
+
+            <!-- Nodos (Las 7 fases adaptadas) -->
+            <div class="crisp-node" data-step="1" id="node-1">
+                <div class="ring" style="--color: #1976d2;">
+                    <span class="badge" style="--color: #1976d2;">1</span>
+                    <span class="icon">📈</span>
+                </div>
+                <div class="label">Comprensión<br>del Negocio</div>
+            </div>
+
+            <div class="crisp-node" data-step="2" id="node-2">
+                <div class="ring" style="--color: #f57c00;">
+                    <span class="badge" style="--color: #f57c00;">2</span>
+                    <span class="icon">🔍</span>
+                </div>
+                <div class="label">Comprensión<br>de los Datos</div>
+            </div>
+
+            <div class="crisp-node" data-step="3" id="node-3">
+                <div class="ring" style="--color: #fbc02d;">
+                    <span class="badge" style="--color: #fbc02d;">3</span>
+                    <span class="icon">⚙️</span>
+                </div>
+                <div class="label">Preparación<br>de los Datos</div>
+            </div>
+
+            <div class="crisp-node" data-step="4" id="node-4">
+                <div class="ring" style="--color: #7b1fa2;">
+                    <span class="badge" style="--color: #7b1fa2;">4</span>
+                    <span class="icon">🧠</span>
+                </div>
+                <div class="label">Modelado</div>
+            </div>
+
+            <div class="crisp-node" data-step="5" id="node-5">
+                <div class="ring" style="--color: #d32f2f;">
+                    <span class="badge" style="--color: #d32f2f;">5</span>
+                    <span class="icon">📊</span>
+                </div>
+                <div class="label">Evaluación</div>
+            </div>
+
+            <div class="crisp-node" data-step="6" id="node-6">
+                <div class="ring" style="--color: #388e3c;">
+                    <span class="badge" style="--color: #388e3c;">6</span>
+                    <span class="icon">🚀</span>
+                </div>
+                <div class="label">Despliegue</div>
+            </div>
+
+            <div class="crisp-node" data-step="7" id="node-7">
+                <div class="ring" style="--color: #0097a7;">
+                    <span class="badge" style="--color: #0097a7;">7</span>
+                    <span class="icon">👁️</span>
+                </div>
+                <div class="label">Monitoreo</div>
+            </div>
+
         </div>
-
-        <!-- Ventana Modal de Información -->
-        <div id="modal-overlay" class="modal-overlay"></div>
-        <div id="info-modal" class="info-modal glass-panel">
-            <button id="close-modal" class="close-btn">&times;</button>
-            <div class="modal-content">
-                <h3 id="modal-title">Título</h3>
-                <div class="modal-body">
-                    <p><strong>Objetivo:</strong> <span id="modal-obj"></span></p>
-                    <p><strong>Acciones:</strong> <span id="modal-act"></span></p>
-                </div>
-            </div>
-        </div>
-
-        <section class="team-rules glass-panel">
-            <h2>Nuestra Metodología de Equipo</h2>
-            <div class="rules-grid">
-                <div class="rule-card">
-                    <h4>📝 Git/GitHub</h4>
-                    <p>Empleamos ramas por cada <i>feature</i> de la app y reservamos la rama <code>main</code> para código cien por ciento funcional y verificado.</p>
-                </div>
-                <div class="rule-card">
-                    <h4>📦 Entornos Virtuales</h4>
-                    <p>Utilizamos entornos de Python (`venv` o `conda`) y versionamiento local guiado por un único `requirements.txt`.</p>
-                </div>
-                <div class="rule-card">
-                    <h4>💬 Comunicación Ágil</h4>
-                    <p>La toma constante de feedback evita retrabajos en etapas posteriores, especialmente luego de los resultados del Análisis Exploratorio (EDA).</p>
-                </div>
-                <div class="rule-card">
-                    <h4>📓 Documentación</h4>
-                    <p>Mantenemos el orden. Todo código debe acompañarse de bloques de texto (teoría) que expliquen el <i>porqué</i> de las decisiones tomadas en los Notebooks.</p>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <p>© 2026 Inteligencia Artificial | <strong>Grupo 2</strong></p>
+    <!-- Modal de Información -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="info-modal" class="info-modal">
+        <button id="close-modal" class="close-btn">&times;</button>
+        <h3 id="modal-title">Título</h3>
+        <p><strong>Objetivo:</strong> <span id="modal-obj"></span></p>
+        <p><strong>Acciones:</strong> <span id="modal-act"></span></p>
+    </div>
+
+    <!-- Integrantes Footer -->
+    <footer class="glass-footer">
+        <h3>Grupo 2</h3>
+        <p>Araujo Diego | Berrospi Nicolle | Jimenez Andres | Grados Parrish | Castro Jair | Torres Matias</p>
     </footer>
 
     <script src="script.js"></script>
